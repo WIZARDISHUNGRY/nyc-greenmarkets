@@ -22,7 +22,7 @@ class Greenmarket
 			row
 		end
 		File.open(dst, 'w') do |f|
-			f.write(rows.to_json)
+			f.write('var markets = ' rows.to_json ' ;')
 		end
 	end
 
