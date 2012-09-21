@@ -14,8 +14,8 @@ class Greenmarket
 
 	def transform(src,dst)
 		j = JSON.parse File.read(src)
-		columns = j["meta"]["view"]["columns"].collect{|c| c['name'] }
-    # ["sid", "id", "position", "created_at", "created_meta", "updated_at", "updated_meta", "meta", "Borough", "Market Name ", "Street Address", "Day(s)", "Hours", "Distribute Health Bucks", "Accepts Health Bucks", "EBT", "Stellar"]
+		columns = j["meta"]["view"]["columns"].collect{|c| c['name'].strip }
+    # ["sid", "id", "position", "created_at", "created_meta", "updated_at", "updated_meta", "meta", "Borough", "Market Name", "Street Address", "Day(s)", "Hours", "Distribute Health Bucks", "Accepts Health Bucks", "EBT", "Stellar"]
 		rows = j['data'].collect do |row|
 			row = Hash[*columns.zip(row).flatten]
 			row['geo'] = geocode(row)

@@ -9,8 +9,15 @@ exclude: [ Gemfile, Gemfile.lock, LICENSE.txt, README.rdoc, Rakefile, fixtures, 
 <script>
 window.onload = function() {
 	g = Greenmarket(markets,$("#greenmarkets"));
+	g.init();
 }
 </script>
+<style>
+.adr {
+	border: 1px;
+	padding: 12px;
+}
+</style>
 <form id="greenmarkets">
 <a href="#" class="refresh"> Refresh</a>
 </form>
