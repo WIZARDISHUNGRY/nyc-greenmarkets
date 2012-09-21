@@ -51,3 +51,18 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+require 'lib/nyc-greenmarkets'
+# https://nycopendata.socrata.com/Business-and-Economic/2012-NYC-Farmers-Market-List/b7kx-qikm
+url = 'https://nycopendata.socrata.com/api/views/b7kx-qikm/rows.json?accessType=DOWNLOAD'
+cache = 'fixtures/greenmarkets.json'
+transformed = 'fixtures/transformed.json'
+greenmarket =  Greenmarket.new
+
+task :populate_fixtures do
+	greenmarket.download(url,cache)
+end
+
+task :transform do
+	greenmarket.transform(cache, transformed)
+end

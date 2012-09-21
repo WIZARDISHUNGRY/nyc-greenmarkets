@@ -16,3 +16,4 @@ doc
 pkg
 
 _site/
+Gemfile.lock
