@@ -27,7 +27,7 @@ function Greenmarket(markets,scope) {
 	}
 
 	this._geo=function(position) {
-		alert(position.coords.latitude + " " + position.coords.longitude);
+		//alert(position.coords.latitude + " " + position.coords.longitude);
 		this._distance(position.coords.latitude, position.coords.longitude);
 	}
 
