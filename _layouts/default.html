@@ -3,6 +3,93 @@
 <head profile="http://gmpg.org/xfn/11">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>{% if page.title %} {{ page.title }} {% endif %} </title>
-</head><body>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<script src="fixtures/transformed.json"> </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"> </script>
+<script src="impl.js"> </script>
+<script>
+window.onload = function() {
+	g = Greenmarket(markets,$(".main"));
+	g.init();
+}
+</script>
+<meta name="viewport" content="user-scalable=no, width=device-width" />
+<style>
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+  background-color:silver; background-image: -webkit-radial-gradient(100% 150%, circle , silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent), -webkit-radial-gradient(0 150%, circle , silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent), -webkit-radial-gradient(50% 100%, circle , white 10%, silver 11%, silver 23%, white 24%, white 30%, silver 31%, silver 43%, white 44%, white 50%, silver 51%, silver 63%, white 64%, white 71%, transparent 71%, transparent), -webkit-radial-gradient(100% 50%, circle , white 5%, silver 6%, silver 15%, white 16%, white 20%, silver 21%, silver 30%, white 31%, white 35%, silver 36%, silver 45%, white 46%, white 49%, transparent 50%, transparent), -webkit-radial-gradient(0 50%, circle , white 5%, silver 6%, silver 15%, white 16%, white 20%, silver 21%, silver 30%, white 31%, white 35%, silver 36%, silver 45%, white 46%, white 49%, transparent 50%, transparent); background-size:100px 50px;; background-color:silver; background-image: -webkit-radial-gradient(100% 150%, circle , silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent), -webkit-radial-gradient(0 150%, circle , silver 24%, white 25%, white 28%, silver 29%, silver 36%, white 36%, white 40%, transparent 40%, transparent), -webkit-radial-gradient(50% 100%, circle , white 10%, silver 11%, silver 23%, white 24%, white 30%, silver 31%, silver 43%, white 44%, white 50%, silver 51%, silver 63%, white 64%, white 71%, transparent 71%, transparent), -webkit-radial-gradient(100% 50%, circle , white 5%, silver 6%, silver 15%, white 16%, white 20%, silver 21%, silver 30%, white 31%, white 35%, silver 36%, silver 45%, white 46%, white 49%, transparent 50%, transparent), -webkit-radial-gradient(0 50%, circle , white 5%, silver 6%, silver 15%, white 16%, white 20%, silver 21%, silver 30%, white 31%, white 35%, silver 36%, silver 45%, white 46%, white 49%, transparent 50%, transparent); background-size:100px 50px;
+  font-family: 'Open Sans', sans-serif;
+}  
+.adr {
+  background-color: rgba(174, 149, 109, 0.9);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.adr .org {
+  font-weight:bold;
+}
+.error {
+  display: none;
+}
+.errors * {
+  display: block;
+}
+
+.main {
+}
+
+.toolbar a {
+  text-decoration: none;
+}
+
+</style>
+
+</head>
+<body>
 {{ content }}
 </body></html>
