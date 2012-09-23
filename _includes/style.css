@@ -1,0 +1,219 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* End Reset */
+
+body {
+  background-color:black; background-image: -webkit-radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), -webkit-radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), -webkit-radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px), -webkit-radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px); background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;; background-color:black; background-image: -webkit-radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), -webkit-radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), -webkit-radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px), -webkit-radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px); background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+}
+
+@-webkit-keyframes slide {
+    from{
+        background:left;
+    }
+    to{
+        background:right;
+    }
+}
+
+
+a:link, a:visited {
+  color: rgb(93,93,127);
+}
+
+.vcard {
+  background-color: rgba(0, 79, 109, 0.9);
+  padding: 16px;
+  margin-bottom: 8px;
+}
+
+.vcard:nth-child(odd) { 
+  background-color: rgba(0, 109, 79, 0.9);
+}
+
+.vcard a.adr {
+  color: white;
+  text-decoration: none;
+}
+
+.vcard, .init, .error, .toolbar, .title {
+  border-radius: 12px;
+}
+
+.adr .org {
+  font-weight:bold;
+}
+
+.main, .toolbar, .vcard, .results, .error, .vcard * {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 640px;
+}
+
+.results {
+  width: 640px;
+}
+
+.title.fake {
+  opacity: 0.0;
+}
+
+.title {
+  background: rgba(12,127,5,.9);
+  font-size: 300%;
+  color: white;
+  padding: 12px;
+  display: block;
+  width: 616px;
+}
+
+.title.real {
+  top: 0;
+  position: fixed;
+}
+
+.toolbar a {
+  text-decoration: none;
+  color: #ccc;
+}
+
+.toolbar a:hover {
+  color: white;
+}
+
+
+.toolbar {
+  padding-right: 8px;
+  padding-left: 8px;
+  border-radius: 4px;
+  background: rgba(12,12,12,.8);
+  font-size: 300%;
+  top: 0;
+  right: 0;
+  float: right;
+  position: fixed;
+  text-align: right;
+  overflow: hidden; 
+  vertical-align: bottom;
+  z-index: 666;
+}
+
+.toolbar, .title {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+.toolbar {
+  border-bottom-right-radius: 0px;
+  vertical-align: bottom;
+}
+
+.vrule {
+  display: inline;
+  vertical-align: baseline;
+  border-left: 4px dotted white;
+  color: white;
+  margin-left: 0.25em;
+  width: 1px !important;
+  height: .2em;
+  overflow: hidden;
+  opacity: .9;
+}
+
+.toolbar h1 {
+  padding-right: 2em;
+}
+
+.error {
+  display: none;
+  background: green;
+}
+
+.init {
+  display: block;
+  background: purple;
+}
+
+.init, .error {
+  margin: auto;
+  font-size: 200%;
+  color: white;
+  width: 640px;
+  padding: 16px;
+}
+
+.results {
+  padding-top: 1em;
+}
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+  /* Styles */
+  .no-mobile, .no-mobile * {
+    display: none !important;
+  }
+  .toolbar {
+    font-size: 300%;
+  }
+  .toolbar a {
+    padding-right: 24px;
+  }
+  .main, .main .results, .title {
+    max-width: 320px;
+    width: 100%;
+  }
+  .title.real {
+    position: inherit;
+  }
+  .title.fake {
+    display: none;
+  }
+  .title, {
+    font-size: 75%;
+  }
+}

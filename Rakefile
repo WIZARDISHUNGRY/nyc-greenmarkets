@@ -56,7 +56,7 @@ require 'lib/nyc-greenmarkets'
 # https://nycopendata.socrata.com/Business-and-Economic/2012-NYC-Farmers-Market-List/b7kx-qikm
 url = 'https://nycopendata.socrata.com/api/views/b7kx-qikm/rows.json?accessType=DOWNLOAD'
 cache = 'fixtures/greenmarkets.json'
-transformed = 'fixtures/transformed.json'
+transformed = '_includes/transformed.json'
 greenmarket =  Greenmarket.new
 
 task :populate_fixtures do
