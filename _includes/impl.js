@@ -14,14 +14,16 @@ function Greenmarket(markets,scope) {
 	this.initGeo=function() {
 		if ("geolocation" in navigator) {
 			//alert("geolocation is available");
-			var val = navigator.geolocation.getCurrentPosition(
+			navigator.geolocation.getCurrentPosition(
 				function(event) {self._geo(event)},
 				function(event) {self._geoError(event)}
 			);
+			$('.icon-undo',this._scope).addClass('spinning');
+			window.scrollTo(0,0);
 		}
 		else {
-      self._showError("geo-missing");
-      this._hideError("init");
+			self._showError("geo-missing");
+			this._hideError("init");
 		}
 	}
 
@@ -30,9 +32,22 @@ function Greenmarket(markets,scope) {
 			self.initGeo();
       return false;
 		});
+
+    $('.title',this._scope).click(function(){
+        $('html, body').animate({scrollTop:0}, 'fas');
+        return false;
+    });
+
+
     $('.error',this._scope).hide();
+	$('.error',this._scope).append("<a href='#' class='dismiss'>OK</a>");
+	$('.error .dismiss',this._scope).on('click', function(event) {
+		$(event.target.parentNode).fadeOut();
+		return false;
+	});
+
     $(this._scope).fadeIn();
-	}
+  }
 
 	this.init= function() {
 		this.initDom();
@@ -41,14 +56,17 @@ function Greenmarket(markets,scope) {
 
 	this._geo=function(position) {
 		//alert(position.coords.latitude + " " + position.coords.longitude);
-    this._hideError("init");
-    this._position=position;
+		this._hideError("init");
+		$('.icon-undo',this._scope).removeClass('spinning');
+		this._position=position;
 		this._distance(position.coords.latitude, position.coords.longitude);
+		$('.curtain',this._scope).fadeIn('slow');
 	}
 
 	this._geoError=function(positionError) {
 		console.log("Position Error: " + positionError.message);
-    self._showError("geo-perm");
+		$('.icon-undo',this._scope).removeClass('spinning');
+		self._showError("geo-perm");
 	}
 
 	this._distance=function(latitude, longitude) {
@@ -82,27 +100,20 @@ function Greenmarket(markets,scope) {
 	this._decorateItem=function(item) {
 		var geo = item["geo"];
 		var adr = geo["address_components"]; // this is a candidate for refactor in the Ruby
-    var long_adr = item["geo"].formatted_address;
+		var long_adr = item["geo"].formatted_address;
 		return " \
 			<div class='vcard'> \
         <a class='adr' target='_new' href='http://maps.apple.com/maps?dirflg=w&daddr="+escape(long_adr)+
         "&saddr="+this.getPositionString()+"'> \
           <div class='org fn organization-name extended-address'>"+ item["Market Name"] +"</div> \
-          "+( (adr.length>5) ? " \
-            <div class='street-address'>"+ adr[0].long_name +"</div> \
-            <span class='neighborhood'>"+ adr[1].long_name +"</span>,  \
-            <span class='sublocality'>"+ adr[2].long_name +"</span>,  \
-            <abbr title='"+ adr[5].long_name +"' class='region'>"+ adr[5].short_name +"</abbr> \
-          ": " \
-            <div class='street-address'>"+ long_adr +"</div> \
-          ")+" \
+		  <div class='street-address'>"+ long_adr +"</div> \
         </a> \
 			</div> \
 		";
 	}
 
   this._showError=function(class_name) {
-    $('.error.'+class_name,this._scope).center().slideDown();
+    $('.error.'+class_name,this._scope).center().fadeIn();
   }
 
   this._hideError=function(class_name) {
@@ -113,7 +124,7 @@ function Greenmarket(markets,scope) {
         class_name = '.'+class_name;
       class_name +='.error';
     }
-    $(class_name).hide();
+    $(class_name).fadeOut();
   }
 
   this.getPositionString=function(class_name) {
@@ -121,8 +132,5 @@ function Greenmarket(markets,scope) {
     return position.coords.latitude + "," + position.coords.longitude;
   }
 
-	// PREAMBLE
-
 	return this;
 }
-

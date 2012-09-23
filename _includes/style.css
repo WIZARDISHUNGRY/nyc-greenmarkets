@@ -46,17 +46,25 @@ table {
 
 body {
   background-color:black; background-image: -webkit-radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), -webkit-radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), -webkit-radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px), -webkit-radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px); background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;; background-color:black; background-image: -webkit-radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), -webkit-radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), -webkit-radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px), -webkit-radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px); background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+  background-attachment:fixed;
   font-family: 'Open Sans', sans-serif;
   color: white;
 }
 
-@-webkit-keyframes slide {
-    from{
-        background:left;
-    }
-    to{
-        background:right;
-    }
+@-webkit-keyframes rotate {
+	from {
+		-webkit-transform: rotate(360deg);
+	}
+	to {
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+.spinning {
+	-webkit-animation-name:	rotate;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
 }
 
 
@@ -65,13 +73,17 @@ a:link, a:visited {
 }
 
 .vcard {
-  background-color: rgba(0, 79, 109, 0.9);
+  background-color: rgba(123, 63, 0, 0.5);
   padding: 16px;
   margin-bottom: 8px;
 }
 
 .vcard:nth-child(odd) { 
-  background-color: rgba(0, 109, 79, 0.9);
+  background-color: rgba(0, 109, 79, 0.5);
+}
+
+.vcard:hover {
+	background-color: rgba(118, 109, 0, 0.9);
 }
 
 .vcard a.adr {
@@ -79,7 +91,7 @@ a:link, a:visited {
   text-decoration: none;
 }
 
-.vcard, .init, .error, .toolbar, .title {
+.vcard, .init, .error, .toolbar, .title, .credits {
   border-radius: 12px;
 }
 
@@ -87,7 +99,7 @@ a:link, a:visited {
   font-weight:bold;
 }
 
-.main, .toolbar, .vcard, .results, .error, .vcard * {
+.credits, .main, .toolbar, .vcard, .results, .error, .vcard * {
   margin-left: auto;
   margin-right: auto;
   max-width: 640px;
@@ -102,7 +114,7 @@ a:link, a:visited {
 }
 
 .title {
-  background: rgba(12,127,5,.9);
+  background: rgba(12,127,111,.9);
   font-size: 300%;
   color: white;
   padding: 12px;
@@ -188,6 +200,59 @@ a:link, a:visited {
   padding-top: 1em;
 }
 
+.choice {
+	font-size: larger;
+	width: 100%;
+	border: 2px solid blue;
+	display: table;
+	text-align:justify;
+}
+.choice > * {
+	display: table-cell;
+	height: 100%;
+	border-radius: 4px;
+	background: green;
+	padding: 12px;
+	white-space: nowrap;
+	text-align: center;
+}
+.choice > label {
+	background: inherit;
+	font-style: italic;
+	font-weight: 85%;
+	padding-right: 24px;
+}
+
+.dismiss {
+	text-decoration: none;
+	position:absolute;
+	color: white !important;
+	bottom: 12px;
+	right: 12px;
+	padding: 2px;
+	padding-left: 12px;
+	padding-right: 12px;
+	background: blue;
+	border-radius: 4px;
+}
+
+.choice > div, .title {
+	cursor: pointer;
+}
+
+.credits {
+  background-color: rgba(89, 19, 79, 0.5);
+  padding: 16px;
+}
+.credits li, .credits ul {
+  display: inline;
+}
+.credits li:last-child:before {
+	content: " & ";
+}
+.credits li:last-child:after {
+	content: ".";
+}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen 
