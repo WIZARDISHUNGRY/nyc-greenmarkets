@@ -1,7 +1,7 @@
 ---
 layout: default 
 title: NYC Greenmarkets Locator
-exclude: [ Gemfile, Gemfile.lock, LICENSE.txt, README.rdoc, Rakefile, fixtures, index.md ]
+exclude: [ Gemfile, Gemfile.lock, LICENSE.txt, README.rdoc, Rakefile, fixtures ]
 ---
 <div class="main" style="display: none">
   <h1 class="title real">{{ page.title }}</h1>
