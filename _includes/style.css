@@ -50,7 +50,9 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: white;
 }
-
+* {
+box-sizing: border-box
+}
 @-webkit-keyframes rotate {
 	from {
 		-webkit-transform: rotate(360deg);
@@ -99,10 +101,11 @@ a:link, a:visited {
   font-weight:bold;
 }
 
-.credits, .main, .toolbar, .vcard, .results, .error, .vcard *, .topnav {
+.credits, .main, .toolbar, .vcard, .results, .error, .vcard *, .topnav, .topnav * {
   margin-left: auto;
   margin-right: auto;
   max-width: 640px;
+  box-sizing: border-box;
 }
 
 .results, .topnav {
@@ -119,7 +122,8 @@ a:link, a:visited {
   color: white;
   padding: 12px;
   display: block;
-  width: 616px;
+  width: 640px;
+  box-sizing: border-box;
 }
 
 .title.real {
@@ -140,8 +144,8 @@ a:link, a:visited {
 .toolbar {
   padding-right: 8px;
   padding-left: 8px;
-  border-radius: 4px;
-  background: rgba(12,12,12,.9);
+  border-radius: 8px;
+  background: rgba(12,12,12,.5);
   font-size: 300%;
   top: 0;
   right: 0;
@@ -151,25 +155,25 @@ a:link, a:visited {
   overflow: hidden; 
   vertical-align: bottom;
   z-index: 666;
+	height: 1.1em;
 }
 
 .toolbar, .title {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
-.toolbar {
+.toolbar * {
   border-bottom-right-radius: 0px;
-  vertical-align: bottom;
 }
 
 .vrule {
-  display: inline;
+  display: inline-block;
   vertical-align: baseline;
-  border-left: 4px dotted white;
+  border-left: 4px dotted #ccc;
   color: white;
   margin-left: 0.25em;
   width: 1px !important;
-  height: .2em;
+  height: 1.5ex;
   overflow: hidden;
   opacity: .9;
 }
@@ -182,6 +186,7 @@ a:link, a:visited {
 .init {
   display: block;
   background: purple;
+  margin-top: 2.5em; 
 }
 
 .init, .error {
@@ -190,10 +195,6 @@ a:link, a:visited {
   color: white;
   width: 640px;
   padding: 16px;
-}
-
-.results {
-  padding-top: .5em;
 }
 
 .choice {
@@ -287,20 +288,26 @@ and (max-device-width : 480px) {
   .toolbar {
     font-size: 300%;
   }
-  .toolbar a {
-    padding-right: 24px;
+  .error {
+		font-size: 80%;
   }
-  .main, .main .results, .title {
-    max-width: 320px;
-    width: 100%;
+  .main, .main .results, .title, .topnav, .topnav .choice, .error {
+    width: 320px;
   }
+  .topnav .choice, .topnav {
+		width: 100%;
+		font-size: smaller;
+	}
+	.choice div {
+		padding: 4px;
+	}
   .title.real {
     position: inherit;
   }
   .title.fake {
     display: none;
   }
-  .title, {
-    font-size: 75%;
+  .title {
+		font-size: 120%;
   }
 }
