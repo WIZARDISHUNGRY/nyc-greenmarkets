@@ -163,7 +163,7 @@ a:hover {
   border-bottom-right-radius: 0px;
 }
 
-.vcard, .init, .error, .toolbar, .credits {
+.vcard, .init, .error, .toolbar, .credits, .title {
   border-radius: 12px;
 }
 
@@ -172,6 +172,7 @@ a:hover {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
 
 .distance {
   padding: 4px;
