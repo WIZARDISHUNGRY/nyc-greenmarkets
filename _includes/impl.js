@@ -38,8 +38,10 @@ function Greenmarket(markets,scope) {
         return false;
     });
 
-		$('.when div',this._scope).on('click',function(event){
-				$(event.target).toggleClass('selected');
+		$('.when div',this._scope).click(function(event){
+				$(event.target).addClass('selected');
+				var value = $(event.target).attr('value');
+				$('div[value!="'+value+'"]',event.target.parentNode).removeClass('selected');
         return false;
     });
 

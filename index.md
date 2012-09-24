@@ -20,9 +20,9 @@ exclude: [ Gemfile, Gemfile.lock, LICENSE.txt, README.rdoc, Rakefile, fixtures ]
   <div class="curtain topnav">
     <div class="choice when">
       <label>Open</label>
-      <div>Now</div>
-      <div>Soon</div>
-      <div>Whenever</div>
+      <div value="now" class="selected">Now</div>
+      <div value="soon">Soon</div>
+      <div value="whenever">Whenever</div>
     </div>
   </div>
   <div class="results"> </div>
