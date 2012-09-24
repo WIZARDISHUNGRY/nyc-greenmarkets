@@ -71,7 +71,13 @@ box-sizing: border-box
 
 
 a:link, a:visited {
-  color: rgb(93,93,127);
+  color: rgb(51,91,127);
+}
+
+
+a:hover {
+  color: white;
+	text-decoration: underline;
 }
 
 .vcard {
@@ -80,6 +86,7 @@ a:link, a:visited {
   padding-top: 12px;
   padding-bottom: 12px;
   margin-bottom: 8px;
+	overflow: auto;
 }
 
 .vcard:nth-child(odd) { 
@@ -87,16 +94,7 @@ a:link, a:visited {
 }
 
 .vcard:hover {
-	background-color: rgb(118, 109, 0);
-}
-
-.vcard a.adr {
-  color: white;
-  text-decoration: none;
-}
-
-.vcard, .init, .error, .toolbar, .title, .credits {
-  border-radius: 12px;
+	background-color: rgb(127, 127, 0);
 }
 
 .adr .org {
@@ -119,7 +117,7 @@ a:link, a:visited {
 }
 
 .title {
-  background: rgba(57,37,102,.9);
+  background: rgb(57,37,102);
   font-size: 300%;
   color: white;
   padding: 12px;
@@ -146,6 +144,7 @@ a:link, a:visited {
 .toolbar, .distance {
   background: rgba(12,12,12,.5);
   float: right;
+	clear: right;
   text-align: right;
   overflow: hidden; 
   vertical-align: bottom;
@@ -164,15 +163,20 @@ a:link, a:visited {
   border-bottom-right-radius: 0px;
 }
 
+.vcard, .init, .error, .toolbar, .credits {
+  border-radius: 12px;
+}
+
 .toolbar, .title, {
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
+  z-index: 666;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .distance {
   padding: 4px;
-	border-radius: 4px;
-	cursor: help;
+  border-radius: 4px;
+  cursor: help;
 }
 .distance.km {
   display: none;
@@ -192,7 +196,7 @@ a:link, a:visited {
 
 .error {
   display: none;
-  background: green;
+  background: red;
 }
 
 .init {
@@ -228,7 +232,11 @@ a:link, a:visited {
 
 }
 
-.choice > * {
+.distance {
+	text-align:right;
+}
+
+.choice > *, .directions > * {
 	display: table-cell;
 	height: 100%;
 	border-radius: 4px;
@@ -238,13 +246,26 @@ a:link, a:visited {
 	border: 4px solid rgba(0,0,0,0.0);
 	background: rgba(20,20,20,.5);
 }
+.directions > * {
+	background: rgb(50,50,50);
+}
+.directions {
+	padding: 0; 
+	border-collapse: separate;
+	border-spacing: 4px;
+	border-radius: 4px;
+	float:right;
+}
 
 .choice > div:hover {
 	border: 4px solid rgba(55,55,99,1);
 }
 
 .choice > div.selected {
-	background: rgba(120,120,20,.5);
+	background: rgba(127,127,10,.9);
+}
+.highlight {
+	background: #59C;
 }
 
 .choice > label {
@@ -252,6 +273,11 @@ a:link, a:visited {
 	font-style: italic;
 	font-weight: 85%;
 	padding-right: 24px;
+}
+.directions > *, .directions > *:hover {
+	text-decoration: none !important;
+	padding: 2px;
+	border: 0;
 }
 
 .dismiss {
@@ -322,4 +348,24 @@ and (max-device-width : 480px) {
   .title {
 		font-size: 120%;
   }
+}
+
+/* EMOJIS */
+
+.emoji .walk:before { content: "🏃";}
+.emoji .bike:before { content: "🚲";} 
+.emoji .transit:before { content: "🚌";}
+.emoji .drive:before { content: "🚗";}
+.emoji .directions {
+	font-size: 200%;
+}
+.emoji .directions > * > span {
+	display: none;
+}
+.emoji .directions a {
+}
+.emoji .directions a.highlight {
+}
+.emoji .directions a:hover {
+	background: lime;
 }

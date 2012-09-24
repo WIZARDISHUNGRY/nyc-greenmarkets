@@ -45,6 +45,10 @@ function Greenmarket(markets,scope) {
         return false;
     });
 
+		if(navigator.userAgent.match(/(iPhone|iPod|iPad|Mac OS X 10_[78])/i) &&
+			!navigator.userAgent.match(/Chrome/) ) {
+			$('body').addClass('emoji');
+		}
 
     $('.error',this._scope).hide();
 		$('.error',this._scope).append("<a href='#' class='dismiss'>OK</a>");
@@ -109,24 +113,40 @@ function Greenmarket(markets,scope) {
 		var geo = item["geo"];
 		var adr = geo["address_components"]; // this is a candidate for refactor in the Ruby
 		var long_adr = item["geo"].formatted_address;
+		var distance = item["distance"];
 
 		function toFixed(value, precision) {
-				var power = Math.pow(10, precision || 0);
-				return String(Math.round(value * power) / power);
+		var power = Math.pow(10, precision || 0);
+			return String(Math.round(value * power) / power);
 		}
 		
 		return " \
 			<div class='vcard'> \
-				<span class='distance km'>"+ toFixed(item["distance"],2) +" km </span> \
-				<span class='distance mi'>"+  toFixed(item["distance"]/1.609344,2) +" mi </span> \
-        <a class='adr' target='_new' href='http://maps.apple.com/maps?dirflg=w&daddr="+escape(long_adr)+
+				<span class='distance km'>"+ toFixed(distance,2) +" km </span> \
+				<span class='distance mi'>"+  toFixed(distance/1.609344,2) +" mi </span> \
+        <div class='adr' target='_new' href='http://maps.apple.com/maps?dirflg=w&daddr="+escape(long_adr)+
         "&saddr="+this.getPositionString()+"'> \
           <div class='org fn organization-name extended-address'>"+ item["Market Name"] +"</div> \
-		  <div class='street-address'>"+ long_adr +"</div> \
-        </a> \
+				  <div class='street-address'>"+ long_adr +"</div> \
+        </div> \
+				"+ this._decorateDirections(this.getPositionString(),long_adr,distance) +" \
 			</div> \
 		";
 	}
+
+	this._decorateDirections=function(here,there,distance) {
+		var methods={walk:"w",bike:"b",transit:"r",drive:'d'}; 
+		var pref="walk";
+		if(distance > 3) pref='bike';
+		if(distance > 4.8) pref='transit';
+		if(distance > 50) pref='drive';
+		var txt = '';
+		for (method in methods) {
+			var flag = methods[method];
+			txt+="<a target='_new' class='"+method+ (pref==method?' highlight' :'') + "' href='http://maps.apple.com/maps?dirflg="+flag+"&daddr="+escape(there)+"&saddr="+here+"'><span>"+method+"</span></a>";
+		}
+		return "<div class='directions'>"+txt+"</div>";
+  }
 
   this._showError=function(class_name) {
     $('.error.'+class_name,this._scope).center().fadeIn();
