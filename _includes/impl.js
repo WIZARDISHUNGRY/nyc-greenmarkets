@@ -78,11 +78,13 @@ function Greenmarket(markets,scope) {
 
 	this._distance=function(latitude, longitude) {
 		data = this._data.slice()
+		var p1 = new LatLon(latitude, longitude);
 
 		for(i in data) {
 			var market = data[i];
 			var coord = market["geo"]["geometry"]["location"];
-			market.distance = this._calcDistance(latitude,longitude,coord.lat,coord.lng)
+		  var p2 = new LatLon(coord.lat, coord.lng);
+			market.distance = p1.distanceTo(p2);
 		}
 
 		data.sort(function(a,b){
@@ -96,20 +98,27 @@ function Greenmarket(markets,scope) {
 			$('.results',this._scope).append(this._decorateItem(market));
 		}
     $('.results',this._scope).fadeIn('slow');
-	}
+		$('.distance').on('click', function(event) {
+			$('.distance').toggle();
+			return false;
+		});
 
-	this._calcDistance=function(x1, y1, x2, y2) {
-		return Math.sqrt(
-			Math.pow(x2-x1,2) +
-			Math.pow(y2-y1,2));
 	}
 
 	this._decorateItem=function(item) {
 		var geo = item["geo"];
 		var adr = geo["address_components"]; // this is a candidate for refactor in the Ruby
 		var long_adr = item["geo"].formatted_address;
+
+		function toFixed(value, precision) {
+				var power = Math.pow(10, precision || 0);
+				return String(Math.round(value * power) / power);
+		}
+		
 		return " \
 			<div class='vcard'> \
+				<span class='distance km'>"+ toFixed(item["distance"],2) +" km </span> \
+				<span class='distance mi'>"+  toFixed(item["distance"]/1.609344,2) +" mi </span> \
         <a class='adr' target='_new' href='http://maps.apple.com/maps?dirflg=w&daddr="+escape(long_adr)+
         "&saddr="+this.getPositionString()+"'> \
           <div class='org fn organization-name extended-address'>"+ item["Market Name"] +"</div> \

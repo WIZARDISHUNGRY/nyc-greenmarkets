@@ -76,7 +76,9 @@ a:link, a:visited {
 
 .vcard {
   background-color: rgb(123, 63, 0);
-  padding: 16px;
+  padding: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   margin-bottom: 8px;
 }
 
@@ -141,29 +143,39 @@ a:link, a:visited {
 }
 
 
+.toolbar, .distance {
+  background: rgba(12,12,12,.5);
+  float: right;
+  text-align: right;
+  overflow: hidden; 
+  vertical-align: bottom;
+}
+
 .toolbar {
   padding-right: 8px;
   padding-left: 8px;
   border-radius: 8px;
-  background: rgba(12,12,12,.5);
   font-size: 300%;
   top: 0;
   right: 0;
-  float: right;
-  position: fixed;
-  text-align: right;
-  overflow: hidden; 
-  vertical-align: bottom;
+	position: fixed;
   z-index: 666;
 	height: 1.1em;
+  border-bottom-right-radius: 0px;
 }
 
-.toolbar, .title {
+.toolbar, .title, {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
-.toolbar * {
-  border-bottom-right-radius: 0px;
+
+.distance {
+  padding: 4px;
+	border-radius: 4px;
+	cursor: help;
+}
+.distance.km {
+  display: none;
 }
 
 .vrule {
