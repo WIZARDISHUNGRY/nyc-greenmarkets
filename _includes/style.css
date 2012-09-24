@@ -174,10 +174,6 @@ a:link, a:visited {
   opacity: .9;
 }
 
-.toolbar h1 {
-  padding-right: 2em;
-}
-
 .error {
   display: none;
   background: green;

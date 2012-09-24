@@ -21,13 +21,24 @@ class Greenmarket
 			row['geo'] = geocode(row)
 			row
 		end
+		#return
 		File.open(dst, 'w') do |f|
-			f.write('var markets = ' rows.to_json ' ;')
+			f.write("var markets = #{rows.to_json};")
 		end
 	end
 
 	def geocode(row,count=0)
-		addr = "#{row['Street Address']} #{row['Borough']}, NY"
+		#puts "-- #{row['Street Address']}"
+		addr = "#{row['Street Address']}"
+		addr.sub!( / [&] /, ' and ')
+		addr.sub!( / bet .+ and /, ' and ')
+		addr.sub!( / Aves/, ' Ave')
+		addr.sub!( / Sts/, ' St')
+		addr.sub!( /, .+/, '')
+		addr += " #{row['Borough']}, NY"
+		#puts addr
+		#return
+
 		begin
 			geo = Geocoder.search(addr) .first .data .to_hash
 		rescue Exception => e
