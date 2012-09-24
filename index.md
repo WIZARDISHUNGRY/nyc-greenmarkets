@@ -17,9 +17,9 @@ exclude: [ Gemfile, Gemfile.lock, LICENSE.txt, README.rdoc, Rakefile, fixtures ]
       <a title="Tweet this" href="https://twitter.com/share" target="_new" class="no-mobile twitter-share-button" data-lang="en"><span class="icon-twitter" /></a>
       <a title="Mail author" href="mailto:jonathan.williams@gmail.com?subject=NYC+Greenmarkets+Locator"><span class="icon-envelope"/> </a>
   </div>
-  <div class="curtain">
-    <div class="choice open">
-      <label>Open…</label>
+  <div class="curtain topnav">
+    <div class="choice when">
+      <label>Open</label>
       <div>Now</div>
       <div>Soon</div>
       <div>Whenever</div>
@@ -34,7 +34,7 @@ exclude: [ Gemfile, Gemfile.lock, LICENSE.txt, README.rdoc, Rakefile, fixtures ]
       Your browser doesn't seem to support geolocation. Bummer!
     </div>
   </div>
-  <div class="credits">
+  <div class="credits curtain">
     {% include credits.html %}
   </div>
 </div>

@@ -33,18 +33,23 @@ function Greenmarket(markets,scope) {
       return false;
 		});
 
-    $('.title',this._scope).click(function(){
-        $('html, body').animate({scrollTop:0}, 'fas');
+    $('.title',this._scope).on('click',function(){
+        $('html, body').animate({scrollTop:0}, 'fast');
+        return false;
+    });
+
+		$('.when div',this._scope).on('click',function(event){
+				$(event.target).toggleClass('selected');
         return false;
     });
 
 
     $('.error',this._scope).hide();
-	$('.error',this._scope).append("<a href='#' class='dismiss'>OK</a>");
-	$('.error .dismiss',this._scope).on('click', function(event) {
-		$(event.target.parentNode).fadeOut();
-		return false;
-	});
+		$('.error',this._scope).append("<a href='#' class='dismiss'>OK</a>");
+		$('.error .dismiss',this._scope).on('click', function(event) {
+				$(event.target.parentNode).fadeOut();
+				return false;
+		});
 
     $(this._scope).fadeIn();
   }
