@@ -1,1 +1,2 @@
 auto: true
+exclude: [ Gemfile, Gemfile.lock, LICENSE.txt, README.rdoc, Rakefile, fixtures ]
